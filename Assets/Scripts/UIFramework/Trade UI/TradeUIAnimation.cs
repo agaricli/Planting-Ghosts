@@ -28,6 +28,7 @@ public class TradeUIAnimation : MonoBehaviour
     private Canvas canvas;
     private RectTransform canvasRect;
     private bool isAnimation = false;
+
     private TradeUI tradeUI => FindAnyObjectByType<TradeUI>();
 
     void Start()
@@ -126,6 +127,9 @@ public class TradeUIAnimation : MonoBehaviour
     {
         if (tradePanel != null)
         {
+            if(isAnimation)
+                return; //如果正在动画中，忽略输入
+
             if (!tradePanel.activeSelf)
             {
                 tradePanel.SetActive(true);
